@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-init-method="init" default-destroy-method="destroy">
+
+    <!-- bean definitions here -->
+
+<bean class="com.controller.UserController" id="userController" init-method="init" destroy-method="destroyME">
+<property name="Salary" value="1234567"></property>
+<property name="name" value="Yogi"></property>
+</bean>
+
+<bean class="com.dao.AddressDao" id="addressDao">
+<property name="city" value="Indore"></property>
+<property name="country" value="India"></property>
+</bean>
+<bean class="com.dao.CountryDao" id="countryDao"></bean>
+
+	<bean class="com.controller.AddressController" id="addressController">
+		<property name="addressDao" ref="addressDao"></property>
+		<constructor-arg ref="countryDao"></constructor-arg>
+	</bean>
+
+</beans>
